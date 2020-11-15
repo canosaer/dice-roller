@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<title>Fantasy Dice Roller</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="dist/css/main.css" />
+	</head>
+
+	<body>
+		<div class="display-frame">
+			<header>
+				<div class="title"><span>Fantasy</span> Dice Roller</div>
+				<button class="begin">Click to Begin!</button>
+			</header>
+
+			<section class="roller">
+				<form class="selection">
+					<div class="row">
+						<h1 class="die">Die</h1>
+						<h1 class="nbr">Nbr</h1>
+						<h1 class="bonus">+</h1>
+						<h1 class="malus">-</h1>
+						<h1 class="mod">Mod</h1>
+					</div>
+					<div class="row">
+						<figure id="d4">4</figure>
+						<input type="text" name="d4nbr" maxlength="2" size="1">
+						<p>d4</p>
+						<input type="radio" name="d4-add-sub" value="add">
+						<input type="radio" name="d4-add-sub" value="sub">
+						<input type="text" name="d4mod" maxlength="3" size="1">
+						<button class="d4roll">Roll</button>
+					</div>
+					<div class="row">
+						<figure id="d6">6</figure>
+						<input type="text" name="d6nbr" maxlength="2" size="1">
+						<p>d6</p>
+						<input type="radio" name="d6-add-sub" value="add">
+						<input type="radio" name="d6-add-sub" value="sub">
+						<input type="text" name="d6mod" maxlength="3" size="1">
+						<button class="d6roll">Roll</button>
+					</div>
+					<div class="row">
+						<figure id="d8">8</figure>
+						<input type="text" name="d8nbr" maxlength="2" size="1">
+						<p>d8</p>
+						<input type="radio" name="d8-add-sub" value="add">
+						<input type="radio" name="d8-add-sub" value="sub">
+						<input type="text" name="d8mod" maxlength="3" size="1">
+						<button class="d8roll">Roll</button>
+					</div>
+					<div class="row">
+						<figure id="d10">10</figure>
+						<input type="text" name="d10nbr" maxlength="2" size="1">
+						<p>d10</p>
+						<input type="radio" name="d10-add-sub" value="add">
+						<input type="radio" name="d10-add-sub" value="sub">
+						<input type="text" name="d10mod" maxlength="3" size="1">
+						<button class="d10roll">Roll</button>
+					</div>
+					<div class="row">
+						<figure id="d12">12</figure>
+						<input type="text" name="d12nbr" maxlength="2" size="1">
+						<p>d12</p>
+						<input type="radio" name="d12-add-sub" value="add">
+						<input type="radio" name="d12-add-sub" value="sub">
+						<input type="text" name="d12mod" maxlength="3" size="1">
+						<button class="d12roll">Roll</button>
+					</div>
+					<div class="row">
+						<figure id="d20">20</figure>
+						<input type="text" name="d20nbr" maxlength="2" size="1">
+						<p>d20</p>
+						<input type="radio" name="d20-add-sub" value="add">
+						<input type="radio" name="d20-add-sub" value="sub">
+						<input type="text" name="d20mod" maxlength="3" size="1">
+						<button class="d20roll">Roll</button>
+					</div>
+					<div class="row">
+						<figure id="d100">100</figure>
+						<input type="text" name="d100nbr" maxlength="2" size="1">
+						<p>d100</p>
+						<input type="radio" name="d100-add-sub" value="add">
+						<input type="radio" name="d100-add-sub" value="sub">
+						<input type="text" name="d100mod" maxlength="3" size="1">
+						<button class="d100roll">Roll</button>
+					</div>
+					<div class="row">
+						<input type="text" name="dxface" maxlength="3" size="1">
+						<input type="text" name="dxnbr" maxlength="2" size="1">
+						<p>dX</p>
+						<input type="radio" name="dx-add-sub" value="add">
+						<input type="radio" name="dx-add-sub" value="sub">
+						<input type="text" name="dxmod" maxlength="3" size="1">
+						<button class="dxroll">Roll</button>
+					</div>
+				</form>
+				<div class="container">
+					<div class="animation">
+						<figure class="lich"></figure>
+						<div class="smoke"></div>
+						<p class="result"></p>
+					</div>
+
+					<div class="log">
+						<p></p>
+						<p></p>
+						<p></p>
+						<p></p>
+						<p></p>
+					</div>
+				</div>
+			</section>
+
+
+
+
+
+		</div>
+
+		<script src="http://circuslabs.net:20202/socket.io/socket.io.js"></script>
+		<script src="dist/js/main.js"></script>
+	</body>
+</html>

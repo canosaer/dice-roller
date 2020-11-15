@@ -1,0 +1,409 @@
+/* 
+==============================================
+CONTENT:	Fantasy Dice Roller
+AUTHOR:		Eric Canosa
+==============================================
+
+TABLE OF CONTENTS:
+
+0. Reset
+1. Main Layout
+2. Content
+
+==============================================
+*/
+/* 0. Reset ================================= */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 1. Main Layout ================================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #ccc;
+  font-family: 'Press Start 2P', cursive;
+  display:flex;
+}
+
+.display-frame{
+  width: 600px;
+  height: 400px;
+  margin: 5% auto;
+  background: #ccc;
+}
+
+header{
+  background: url(../img/title.png);
+  height: 100%;
+  padding: 5vh 1vw;
+  display: flex;
+  flex-direction: column;
+}
+
+header div{
+  background: linear-gradient(45deg, #01aa01, #55fe55, #01aa01);
+  font-size: 0.75rem;
+  text-align: center;
+  border: 4px ridge gold;
+  padding: 2vh 1vw;
+  width: 300px;
+}
+
+header span{
+  font-family: 'Cinzel Decorative', cursive;
+  font-weight: bold;
+  font-size: 2rem;
+  display: block;
+}
+
+header button{
+  font-family: 'Press Start 2P', cursive;
+  margin: 4vh 0vw;
+  padding: 1vh 1vw;
+  width: 300px;
+  cursor: pointer;
+}
+
+.roller{
+  display: none;
+}
+
+.selection{
+  background: white;
+  border: 1px black inset;
+  width: 300px;
+  height: 350px;
+  margin: 10px 1vw;
+}
+
+.selection input[type=text]{
+  width: 30px;
+  height: 25px;
+  align-self: center;
+  text-align:center;
+}
+
+.selection input[type=radio]{
+  margin: 12px 12px 0px 0px;
+}
+
+.selection button{
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.75rem;
+  margin: 0px 5px 0px 18px;
+  height: 30px;
+  align-self: center;
+  user-select: none;
+}
+.selection p{
+  font-size: 0.5rem;
+  align-self:center;
+  margin-right: 15px;
+}
+
+.selection .row{
+  display: flex;
+}
+
+.selection .row:first-child{
+  justify-content:space-between;
+  padding: 1vh 75px 1px 10px;
+}
+
+.selection figure{
+  margin: 0vh 15px 0vh 10px;
+  padding-top: 1vh;
+  justify-content: center;
+  align-items: center;
+  display:flex;
+  color: white;
+  font-size: 0.875rem;
+  cursor:pointer;
+  user-select: none;
+}
+
+.selection figure:hover{
+  border: 1px solid red;
+}
+
+#d4{
+  background: url(../img/d4.png);
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+}
+
+#d6{
+  background: url(../img/d6.png);
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+}
+
+#d8{
+  background: url(../img/d8.png);
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+}
+
+#d10, #d100{
+  background: url(../img/d10.png);
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+}
+
+#d10~p, #d12~p, #d20~p{
+  margin-right: 7px;
+}
+
+#d12{
+  background: url(../img/d12.png);
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+}
+
+#d20{
+  background: url(../img/d20.png);
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+}
+
+#d100{
+  font-size: 0.7rem;
+}
+
+#d100~p{
+  font-size: 0.46rem;
+  margin-right: 2px;
+}
+
+.selection input[name=dxface]{
+  margin: 0px 20px 0px 15px;
+}
+
+.selection .row:last-child{
+  margin-top:5px;
+}
+
+.animation{
+  background: white;
+  border: 1px black inset;
+  height: 190px;
+  display:flex;
+}
+
+.log{
+  background: white;
+  border: 1px black inset;
+  height: 150px;
+  margin: 10px 0px;
+}
+
+.lich{
+  background:url(../img/lich.png);
+  width: 70px;
+  height: 90px;
+  background-position: 0px 0px; 
+  transform: scale(1.5);
+  margin: 40px 0px 20px 20px;
+}
+
+/* background-position: 0px 0px;
+background-position: -15px -460px;
+background-position: -110px -460px;
+background-position: -200px -460px;
+background-position: -290px -460px;
+background-position: -382px -460px; 
+*/
+
+.container{
+  margin: 10px auto;
+  width: 230px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.smoke{
+  background:url(../img/lich.png);
+  width: 135px;
+  height: 150px;
+  background-position: -475px -195px;
+  transform: scale(0.75);
+  margin: 20px 0px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+
+.result{
+  font-weight: bold;
+  font-size: 1.75rem;
+  margin-left: 15px;
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  text-align:center;
+  width: 85px;
+}
+
+.log{
+  display: flex;
+  flex-direction:column;
+}
+.log p{
+  margin: 0vh 1vw 2vh;
+  font-size: 0.6rem;
+  color: darkgray;
+}
+
+.log p:first-child{
+  margin-top: auto;
+}
+
+.log p:last-child{
+  margin-bottom: auto;
+  color: black;
+}
+
+/* 2. Content ================================= */
+/* font-family: 'Cinzel Decorative', cursive; */
