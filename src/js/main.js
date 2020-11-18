@@ -33,6 +33,7 @@ let rollDie = function(){
 
 	if(!animating){
 		animating = true;
+		resultP.style.opacity = '0'
 		lichFIGURE.style.backgroundPosition = `-15px -460px`
 		setTimeout(function(){
 			lichFIGURE.style.backgroundPosition = `-110px -460px`
@@ -47,12 +48,11 @@ let rollDie = function(){
 		setTimeout(function(){
 			lichFIGURE.style.backgroundPosition = `-382px -460px`
 			smokeDIV.style.opacity = `1`
-			smokeDIV.style.transition = `all 0.1s ease-out`
+			resultP.style.opacity = '1'
 		}, 400);
 		setTimeout(function(){
 			lichFIGURE.style.backgroundPosition = `0px 0px`
 			smokeDIV.style.opacity = `0`
-			return Math.floor(Math.random() * dieFace) + 1
 			animating = false;
 		}, 500);
 	}
@@ -97,7 +97,7 @@ let rollDie = function(){
 	// }
 
 
-	
+	return Math.floor(Math.random() * dieFace) + 1
 }
 
 let resetLog = function(){
