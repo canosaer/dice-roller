@@ -20,57 +20,84 @@ let dieFIGURES = document.querySelectorAll(`.selection figure`)
 let rollBUTTONS = document.querySelectorAll(`.selection button`)
 let resultP = document.querySelector(`.result`)
 let logPS = document.querySelectorAll(`.log p`)
+let lichFIGURE = document.querySelector(`.lich`)
+let smokeDIV = document.querySelector(`.smoke`)
 var dieNum = 0
 var dieFace = 0
 var addSub = ``
 var addSubValue= ``
 var roll = 0
 var animating = false;
-animationStage = 0;
 
 let rollDie = function(){
 
 	if(!animating){
-		let element = document.querySelector(`.lich`)
-		let start
-
-		function step(timestamp) {
-		if (start === undefined)
-			start = timestamp
-		const elapsed = timestamp - start
-		animationStage++
-		if(animationStage === 1){
-			element.style.backgroundPosition = `-15px -460px` 
-			animationStage++
-		}
-		else if(animationStage === 2){
-			element.style.backgroundPosition = `-110px -460px` 
-			animationStage++
-		}
-		else if(animationStage === 3){
-			element.style.backgroundPosition = `-200px -460px` 
-			animationStage++
-		}
-		else if(animationStage === 4){
-			element.style.backgroundPosition = `-290px -460px` 
-			animationStage++
-		}
-		else{
-			element.style.backgroundPosition = `0px 0px` 
-		}
-		
-
-		if (elapsed < 1000) { // Stop the animation after 2 seconds
-			animationStage = -1
-			window.requestAnimationFrame(step);
-		}
-		}
-
-		window.requestAnimationFrame(step);
+		animating = true;
+		lichFIGURE.style.backgroundPosition = `-15px -460px`
+		setTimeout(function(){
+			lichFIGURE.style.backgroundPosition = `-110px -460px`
+		}, 100);
+		setTimeout(function(){
+			lichFIGURE.style.backgroundPosition = `-200px -460px`
+		}, 200);
+		setTimeout(function(){
+			lichFIGURE.style.backgroundPosition = `-290px -460px`
+			smokeDIV.style.transition = `none`
+		}, 300);
+		setTimeout(function(){
+			lichFIGURE.style.backgroundPosition = `-382px -460px`
+			smokeDIV.style.opacity = `1`
+			smokeDIV.style.transition = `all 0.1s ease-out`
+		}, 400);
+		setTimeout(function(){
+			lichFIGURE.style.backgroundPosition = `0px 0px`
+			smokeDIV.style.opacity = `0`
+			return Math.floor(Math.random() * dieFace) + 1
+			animating = false;
+		}, 500);
 	}
 
+	// if(!animating){
+	// 	let element = document.querySelector(`.lich`)
+	// 	let start
 
-	return Math.floor(Math.random() * dieFace) + 1
+	// 	function step(timestamp) {
+	// 	if (start === undefined)
+	// 		start = timestamp
+	// 	const elapsed = timestamp - start
+	// 	animationStage++
+	// 	if(animationStage === 1){
+	// 		element.style.backgroundPosition = `-15px -460px` 
+	// 		animationStage++
+	// 	}
+	// 	else if(animationStage === 2){
+	// 		element.style.backgroundPosition = `-110px -460px` 
+	// 		animationStage++
+	// 	}
+	// 	else if(animationStage === 3){
+	// 		element.style.backgroundPosition = `-200px -460px` 
+	// 		animationStage++
+	// 	}
+	// 	else if(animationStage === 4){
+	// 		element.style.backgroundPosition = `-290px -460px` 
+	// 		animationStage++
+	// 	}
+	// 	else{
+	// 		element.style.backgroundPosition = `0px 0px` 
+	// 	}
+		
+
+	// 	if (elapsed < 1000) { // Stop the animation after 2 seconds
+	// 		animationStage = -1
+	// 		window.requestAnimationFrame(step);
+	// 	}
+	// 	}
+
+	// 	window.requestAnimationFrame(step);
+	// }
+
+
+	
 }
 
 let resetLog = function(){
