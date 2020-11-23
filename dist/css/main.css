@@ -190,9 +190,24 @@ header span{
   display: block;
 }
 
+header label{
+  font-family: 'Press Start 2P', cursive;
+  color:white;
+  margin: 2vh 0vw 1vh;
+  padding: 1vh 1vw;
+  width: 300px;
+  text-align:center;
+}
+
+header input{
+  font-family: 'Press Start 2P', cursive;
+  margin-bottom: 3vh;
+  padding: 1vh 1vw;
+  width: 300px;
+}
+
 header button{
   font-family: 'Press Start 2P', cursive;
-  margin: 4vh 0vw;
   padding: 1vh 1vw;
   width: 300px;
   cursor: pointer;
