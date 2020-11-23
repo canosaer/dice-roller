@@ -22,12 +22,14 @@ let resultP = document.querySelector(`.result`)
 let logPS = document.querySelectorAll(`.log p`)
 let lichFIGURE = document.querySelector(`.lich`)
 let smokeDIV = document.querySelector(`.smoke`)
+let nameINPUT = document.querySelector(`input[name=name]`)
 var dieNum = 0
 var dieFace = 0
 var addSub = ``
 var addSubValue= ``
 var roll = 0
 var animating = false;
+var name = ``
 
 let rollDie = function(){
 
@@ -57,46 +59,6 @@ let rollDie = function(){
 		}, 500);
 	}
 
-	// if(!animating){
-	// 	let element = document.querySelector(`.lich`)
-	// 	let start
-
-	// 	function step(timestamp) {
-	// 	if (start === undefined)
-	// 		start = timestamp
-	// 	const elapsed = timestamp - start
-	// 	animationStage++
-	// 	if(animationStage === 1){
-	// 		element.style.backgroundPosition = `-15px -460px` 
-	// 		animationStage++
-	// 	}
-	// 	else if(animationStage === 2){
-	// 		element.style.backgroundPosition = `-110px -460px` 
-	// 		animationStage++
-	// 	}
-	// 	else if(animationStage === 3){
-	// 		element.style.backgroundPosition = `-200px -460px` 
-	// 		animationStage++
-	// 	}
-	// 	else if(animationStage === 4){
-	// 		element.style.backgroundPosition = `-290px -460px` 
-	// 		animationStage++
-	// 	}
-	// 	else{
-	// 		element.style.backgroundPosition = `0px 0px` 
-	// 	}
-		
-
-	// 	if (elapsed < 1000) { // Stop the animation after 2 seconds
-	// 		animationStage = -1
-	// 		window.requestAnimationFrame(step);
-	// 	}
-	// 	}
-
-	// 	window.requestAnimationFrame(step);
-	// }
-
-
 	return Math.floor(Math.random() * dieFace) + 1
 }
 
@@ -109,7 +71,7 @@ let logRoll = function(){
 	for(let i=0;i<logPS.length-1;i++){
 		logPS[i].textContent = logPS[i+1].textContent
 	}
-	logPS[logPS.length-1].textContent = `roll(${dieNum}d${dieFace})${addSub}${addSubValue}: ${roll}`
+	logPS[logPS.length-1].textContent = `${name} rolled ${dieNum}d${dieFace}${addSub}${addSubValue}: ${roll}`
 
 }
 
@@ -117,6 +79,10 @@ beginBUTTON.addEventListener(`click`, function(){
 	documentHEADER.style.display = `none`
 	displayDIV.style.border = `2vh black double`
 	rollerSECTION.style.display = `flex`
+	if(nameINPUT.value === ``){
+		name = `unknown`
+	}
+	else name = nameINPUT.value
 })
 
 for(let i=0; i<dieFIGURES.length; i++){
