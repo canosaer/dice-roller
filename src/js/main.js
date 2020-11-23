@@ -72,7 +72,6 @@ let logRoll = function(){
 		logPS[i].textContent = logPS[i+1].textContent
 	}
 	logPS[logPS.length-1].textContent = `${name} rolled ${dieNum}d${dieFace}${addSub}${addSubValue}: ${roll}`
-
 }
 
 beginBUTTON.addEventListener(`click`, function(){
@@ -80,7 +79,7 @@ beginBUTTON.addEventListener(`click`, function(){
 	displayDIV.style.border = `2vh black double`
 	rollerSECTION.style.display = `flex`
 	if(nameINPUT.value === ``){
-		name = `unknown`
+		name = `anon`
 	}
 	else name = nameINPUT.value
 })
