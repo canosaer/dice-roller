@@ -67,6 +67,7 @@ socket.on('rolled', function (data) {
 	for(let i=0;i<logPS.length-1;i++){
 		logPS[i].textContent = logPS[i+1].textContent
 	}
+<<<<<<< HEAD
 	logPS[logPS.length-1].textContent = `${data.name} rolled ${data.count}d${data.faces}${addSub}${addSubValue}: ${dieResult}`
 
 });
@@ -74,6 +75,10 @@ socket.on('rolled', function (data) {
 let resetLog = function(){
 	addSub = ``
 	addSubValue = ``
+=======
+	logPS[logPS.length-1].textContent = `${name} rolled ${dieNum}d${dieFace}${addSub}${addSubValue}: ${roll}`
+
+>>>>>>> parent of 6e0e632 (adjustments)
 }
 
 beginBUTTON.addEventListener(`click`, function(){
@@ -81,7 +86,7 @@ beginBUTTON.addEventListener(`click`, function(){
 	displayDIV.style.border = `2vh black double`
 	rollerSECTION.style.display = `flex`
 	if(nameINPUT.value === ``){
-		name = `anon`
+		name = `unknown`
 	}
 	else name = nameINPUT.value
 })
