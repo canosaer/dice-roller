@@ -1,9 +1,3 @@
-let socket = io('http://circuslabs.net:20202');
-
-
-
-
-
 let displayDIV = document.querySelector(`.display-frame`)
 let documentHEADER = document.querySelector(`header`)
 let beginBUTTON = document.querySelector(`header button`)
@@ -24,11 +18,22 @@ var name = ``
 var dieResult = 0
 
 let rollDie = function(dieCount){
-	socket.emit('request roll', {
-		count: dieCount,
-		faces: dieFace,
-		name: name,
-	});
+	// socket.emit('request roll', {
+	// 	count: dieCount,
+	// 	faces: dieFace,
+	// 	name: name,
+	// });
+
+	dieResult = 0
+	for(let i=0;i<dieCount;i++){
+		dieResult += Math.floor(Math.random() * (dieFace + 1))
+	}
+	resetLog()
+
+	for(let i=0;i<logPS.length-1;i++){
+		logPS[i].textContent = logPS[i+1].textContent
+	}
+	logPS[logPS.length-1].textContent = `${name} rolled ${dieCount}d${dieFace}${addSub}${addSubValue}: ${dieResult}`
 
 	if(!animating){
 		animating = true;
@@ -56,20 +61,6 @@ let rollDie = function(dieCount){
 		}, 500);
 	}
 }
-
-socket.on('rolled', function (data) {
-	dieResult = 0
-	for(let i=0;i<data.rolls.length;i++){
-		dieResult += data.rolls[i]
-	}
-	resetLog()
-
-	for(let i=0;i<logPS.length-1;i++){
-		logPS[i].textContent = logPS[i+1].textContent
-	}
-	logPS[logPS.length-1].textContent = `${data.name} rolled ${data.count}d${data.faces}${addSub}${addSubValue}: ${dieResult}`
-
-});
 
 let resetLog = function(){
 	addSub = ``
