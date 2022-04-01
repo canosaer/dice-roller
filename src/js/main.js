@@ -18,22 +18,23 @@ var name = ``
 var dieResult = 0
 
 let rollDie = function(dieCount){
-	// socket.emit('request roll', {
-	// 	count: dieCount,
-	// 	faces: dieFace,
-	// 	name: name,
-	// });
 
 	dieResult = 0
 	for(let i=0;i<dieCount;i++){
-		dieResult += Math.floor(Math.random() * (dieFace + 1))
+		dieResult += Math.floor(Math.random() * (dieFace)) + 1
 	}
-	resetLog()
+	
+	if(addSub === '+') dieResult = dieResult + parseInt(addSubValue)
+	else if(addSub === '-') dieResult = dieResult - parseInt(addSubValue)
+
+	resultP.textContent = dieResult
 
 	for(let i=0;i<logPS.length-1;i++){
 		logPS[i].textContent = logPS[i+1].textContent
 	}
 	logPS[logPS.length-1].textContent = `${name} rolled ${dieCount}d${dieFace}${addSub}${addSubValue}: ${dieResult}`
+
+	resetLog()
 
 	if(!animating){
 		animating = true;
@@ -84,7 +85,7 @@ for(let i=0; i<dieFIGURES.length; i++){
 			dieNum = 1
 			rollDie(dieNum)
 			
-			resultP.textContent = dieResult
+			
 			
 		}
 		else if(i===1){
@@ -92,7 +93,7 @@ for(let i=0; i<dieFIGURES.length; i++){
 			dieNum = 1
 			rollDie(dieNum)
 			
-			resultP.textContent = dieResult
+
 			
 		}
 		else if(i===2){
@@ -100,7 +101,7 @@ for(let i=0; i<dieFIGURES.length; i++){
 			dieNum = 1
 			rollDie(dieNum)
 			
-			resultP.textContent = dieResult
+
 			
 		}
 		else if(i===3){
@@ -108,7 +109,7 @@ for(let i=0; i<dieFIGURES.length; i++){
 			dieNum = 1
 			rollDie(dieNum)
 			
-			resultP.textContent = dieResult
+
 			
 		}
 		else if(i===4){
@@ -116,7 +117,7 @@ for(let i=0; i<dieFIGURES.length; i++){
 			dieNum = 1
 			rollDie(dieNum)
 			
-			resultP.textContent = dieResult
+
 			
 		}
 		else if(i===5){
@@ -124,7 +125,7 @@ for(let i=0; i<dieFIGURES.length; i++){
 			dieNum = 1
 			rollDie(dieNum)
 			
-			resultP.textContent = dieResult
+
 			
 		}
 		else{
@@ -132,7 +133,7 @@ for(let i=0; i<dieFIGURES.length; i++){
 			dieNum = 1
 			rollDie(dieNum)
 			
-			resultP.textContent = dieResult
+
 			
 		}
 	})
@@ -149,21 +150,21 @@ for(let i=0; i<rollBUTTONS.length; i++){
 			}
 			else dieNum = 1
 
-			rollDie(dieNum)
+			
 			let radioINPUTS = document.querySelectorAll(`.selection input[type=radio]`)
 			
 			if(radioINPUTS[0].checked === true && parseInt(numberINPUTS[1].value) > 0){
 				addSub = `+`
 				addSubValue = numberINPUTS[1].value
-				dieResult = dieResult + parseInt(numberINPUTS[1].value)
+
 			}
 			else if(radioINPUTS[1].checked === true && parseInt(numberINPUTS[1].value) > 0){
 				addSub = `-`
 				addSubValue = numberINPUTS[1].value
-				dieResult = dieResult - parseInt(numberINPUTS[1].value)
+
 			}
-			resultP.textContent = dieResult
-			
+
+			rollDie(dieNum)
 
 			
 			
@@ -183,16 +184,16 @@ for(let i=0; i<rollBUTTONS.length; i++){
 			if(radioINPUTS[2].checked === true && parseInt(numberINPUTS[3].value) > 0){
 				addSub = `+`
 				addSubValue = numberINPUTS[3].value
-				dieResult = dieResult + parseInt(numberINPUTS[3].value)
+
 			}
 			else if(radioINPUTS[3].checked === true && parseInt(numberINPUTS[3].value) > 0){
 				addSub = `-`
 				addSubValue = numberINPUTS[3].value
-				dieResult = dieResult - parseInt(numberINPUTS[3].value)
-			}
-			resultP.textContent = dieResult
-			
 
+			}
+
+			
+			rollDie(dieNum)
 			
 		}
 		else if(i===2){
@@ -203,21 +204,21 @@ for(let i=0; i<rollBUTTONS.length; i++){
 			}
 			else dieNum = 1
 			
-			rollDie(dieNum)
+
 			let radioINPUTS = document.querySelectorAll(`.selection input[type=radio]`)
 
 			
 			if(radioINPUTS[4].checked === true && parseInt(numberINPUTS[5].value) > 0){
 				addSub = `+`
 				addSubValue = numberINPUTS[5].value
-				dieResult = dieResult + parseInt(numberINPUTS[5].value)
+
 			}
 			else if(radioINPUTS[5].checked === true && parseInt(numberINPUTS[5].value) > 0){
 				addSub = `-`
 				addSubValue = numberINPUTS[5].value
-				dieResult = dieResult - parseInt(numberINPUTS[5].value)
+
 			}
-			resultP.textContent = dieResult
+			rollDie(dieNum)
 			
 
 
@@ -231,21 +232,23 @@ for(let i=0; i<rollBUTTONS.length; i++){
 			}
 			else dieNum = 1
 			
-			rollDie(dieNum)
+
 			let radioINPUTS = document.querySelectorAll(`.selection input[type=radio]`)
 
 		
 			if(radioINPUTS[6].checked === true && parseInt(numberINPUTS[7].value) > 0){
 				addSub = `+`
 				addSubValue = numberINPUTS[7].value
-				dieResult = dieResult + parseInt(numberINPUTS[7].value)
+
 			}
 			else if(radioINPUTS[7].checked === true && parseInt(numberINPUTS[7].value) > 0){
 				addSub = `-`
 				addSubValue = numberINPUTS[7].value
-				dieResult = dieResult - parseInt(numberINPUTS[7].value)
+
 			}
 			resultP.textContent = dieResult
+
+			rollDie(dieNum)
 			
 			
 		}
@@ -257,21 +260,21 @@ for(let i=0; i<rollBUTTONS.length; i++){
 			}
 			else dieNum = 1
 			
-			rollDie(dieNum)
+
 			let radioINPUTS = document.querySelectorAll(`.selection input[type=radio]`)
 
 			
 			if(radioINPUTS[8].checked === true && parseInt(numberINPUTS[9].value) > 0){
 				addSub = `+`
 				addSubValue = numberINPUTS[9].value
-				dieResult = dieResult + parseInt(numberINPUTS[9].value)
+
 			}
 			else if(radioINPUTS[9].checked === true && parseInt(numberINPUTS[9].value) > 0){
 				addSub = `-`
 				addSubValue = numberINPUTS[9].value
-				dieResult = dieResult - parseInt(numberINPUTS[9].value)
+
 			}
-			resultP.textContent = dieResult
+			rollDie(dieNum)
 			
 
 			
@@ -284,21 +287,21 @@ for(let i=0; i<rollBUTTONS.length; i++){
 			}
 			else dieNum = 1
 			
-			rollDie(dieNum)
+
 			let radioINPUTS = document.querySelectorAll(`.selection input[type=radio]`)
 
 			
 			if(radioINPUTS[10].checked === true && parseInt(numberINPUTS[11].value) > 0){
 				addSub = `+`
 				addSubValue = numberINPUTS[11].value
-				dieResult = dieResult + parseInt(numberINPUTS[11].value)
+
 			}
 			else if(radioINPUTS[11].checked === true && parseInt(numberINPUTS[11].value) > 0){
 				addSub = `-`
 				addSubValue = numberINPUTS[11].value
-				dieResult = dieResult - parseInt(numberINPUTS[11].value)
+
 			}
-			resultP.textContent = dieResult
+			rollDie(dieNum)
 		
 	
 		}
@@ -310,21 +313,21 @@ for(let i=0; i<rollBUTTONS.length; i++){
 			}
 			else dieNum = 1
 			
-			rollDie(dieNum)
+
 			let radioINPUTS = document.querySelectorAll(`.selection input[type=radio]`)
 
 		
 			if(radioINPUTS[12].checked === true && parseInt(numberINPUTS[13].value) > 0){
 				addSub = `+`
 				addSubValue = numberINPUTS[13].value
-				dieResult = dieResult + parseInt(numberINPUTS[13].value)
+
 			}
 			else if(radioINPUTS[13].checked === true && parseInt(numberINPUTS[13].value) > 0){
 				addSub = `-`
 				addSubValue = numberINPUTS[13].value
-				dieResult = dieResult - parseInt(numberINPUTS[13].value)
+
 			}
-			resultP.textContent = dieResult
+			rollDie(dieNum)
 
 			
 		}
@@ -339,21 +342,21 @@ for(let i=0; i<rollBUTTONS.length; i++){
 			}
 			else dieNum = 1
 			
-			rollDie(dieNum)
+
 			let radioINPUTS = document.querySelectorAll(`.selection input[type=radio]`)
 
 	
 			if(radioINPUTS[14].checked === true && parseInt(numberINPUTS[16].value) > 0){
 				addSub = `+`
 				addSubValue = numberINPUTS[16].value
-				dieResult = dieResult + parseInt(numberINPUTS[16].value)
+
 			}
 			else if(radioINPUTS[15].checked === true && parseInt(numberINPUTS[16].value) > 0){
 				addSub = `-`
 				addSubValue = numberINPUTS[16].value
-				dieResult = dieResult - parseInt(numberINPUTS[16].value)
+
 			}
-			resultP.textContent = dieResult
+			rollDie(dieNum)
 		
 
 		}
