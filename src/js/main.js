@@ -177,7 +177,6 @@ for(let i=0; i<rollBUTTONS.length; i++){
 			}
 			else dieNum = 1
 	
-			rollDie(dieNum)
 			let radioINPUTS = document.querySelectorAll(`.selection input[type=radio]`)
 
 		
